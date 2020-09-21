@@ -136,7 +136,15 @@
 
     })
 
+    // First had to find the button by getting the id, when click it does....
     removeStudentButton.addEventListener('click', function() {
+        // Select all the li that have the class 'selected'
+        let listItemsToDelete = document.querySelectorAll('.selected')
+        // For each li item with the class 'selected'
+        listItemsToDelete.forEach( function(element) {
+            // Remove from list
+            element.remove()
+        })
 
     })
 
