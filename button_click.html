@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+</head>
+<body>
+
+    <!-- Write your HTML content here -->
+    <button>Click here!</button>
+
+<script>
+
+    // Write your script here
+    
+    // Let = create variable, next is the name "button," document is the whole, current web page, 
+    // querySelector use CSS selector ti find an element (always find the first if multiple)
+    let button = document.querySelector("button")
+
+    // addEventListener tells button to be aware of 'event' which is being clicked. We also define 
+    // a funtion here. 
+    button.addEventListener('click', function() {
+        // Function definition, another function that can be passed around like a method in Java
+        alert('You clicked the button!')
+        
+        // (Changes button to this text after being clicked)
+        // button.innerHTML = 'You clicked the button'
+        
+        // (Changes button red after first click)
+        // button.style.backgroundColor = 'red'
+        
+        // Removes button after click
+        button.remove()
+    })
+
+</script>
+
+</body>
+</html>

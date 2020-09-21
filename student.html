@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Club Membership</title>
+
+  <style>
+      
+      .selected {
+        text-decoration: line-through ;
+        font-style: italic;
+        color: gray;
+      }
+
+      input {
+          width: 100%;
+          padding: 5px;
+          margin: 5px 5px 5px 0px;
+          box-sizing: border-box;
+
+      }
+
+  </style>
+
+</head>
+<body>
+
+    <h1>Student Club Roster</h1>
+
+    <h2>Add Students</h2>
+
+    <label for="student-name">Student Name</label><input id="student-name" name="student-name">
+    <br>
+    <label for="student-id">Student ID</label><input id="student-id" name="student-id">
+    <br>
+    <label for="student-gpa">Student GPA</label><input id="student-gpa" name="student-gpa" type="number">
+    <br>
+    <button id="add-student">Add Student</button>    
+
+    <h2>Student List</h2>
+
+    <p>There are 
+        <span id="student-count">
+          <!-- use JavaScript to count the number of students, and show here -->
+        </span> 
+    student(s) in the club.</p>
+    
+
+    <ul id="student-list">
+        <!-- use JavaScript to create li elements  -->
+    </ul>
+
+    <button id="remove-selected-students">Remove selected students</button>
+
+<script>
+
+    /* Add the following functionality to this page
+
+    When the page loads
+        - Using JavaScript, display 0 in span#student-count
+
+    When button#add-students is clicked
+        - Read the value from the student-name input
+        - Read the value from the student-id input
+        - Read the value from the student-gpa input
+        - Create a new li element
+        - Set the new li element innerHTML to a string containing the student's name, id, and GPA
+            - for example "Beyonce Knowles, id: aa1234bb, GPA: 3.8"
+            - Use a template string  
+        - Add a click event handler to each li element. 
+            When a li element is clicked, add the class="selected" to that li element.
+            When a li element is clicked again, remove the class="selected" from that li element
+        - Add the new li element to ul#student-list element 
+        - Update the span#student-count value to the new number of students
+
+    When button#remove-selected-students is clicked, 
+        - remove all of the elements with the class="selected" from the list. 
+        
+    */
+
+    // Find all the elements with these specific ids
+    let studentNameInput = document.querySelector('#student-name')
+    let studentIdInput = document.querySelector('#student-id')
+    let studentGPA = document.querySelector('#student-gpa')
+    let addStudentButton = document.querySelector('#add-student')
+    let studentList = document.querySelector('#student-list')
+    let studentCount = document.querySelector('#student-count')
+    let removeStudentButton = document.querySelector('#remove-selected-students')
+
+    // Counts the number of li elements and use that to figure out how many students
+    let numberOfStudents = 0
+
+    addStudentButton.addEventListener('click', function() {
+        // Read the value from the input and save them into a variable to be used later
+        let studentText = studentNameInput.value
+        // Data that is logged into the console when inspected
+        console.log(studentText)
+        let idText = studentIdInput.value
+        console.log(idText)
+        let gpaText = studentGPA.value
+        console.log(gpaText)
+        
+        let errors = [] // Created an empty array
+        if (studentNameInput.value.length == 0) { // If user enters nothing then error message is given
+            errors.push('Enter a name')
+        }
+        if (studentIdInput.value.length == 0) {
+            errors.push('Enter an id') // Added another specific error message to end of array
+        }
+        // If user does not input anything then return the error message
+        if (studentGPA.value.length == 0) {
+            errors.push('Enter a GPA that is in the range of 0 - 4')
+        }
+        // If user enters a number bigger than 4 then return the error message
+        if (studentGPA.value > 4) {
+            errors.push('Enter a GPA that is in the range of 0 - 4')
+        }
+        if (errors.length > 0) { // If there is more than 0 errors then there is at least one problem with the form
+            // When there's an error
+            alert(errors.join('\n'))
+            return // No more processing
+        }
+
+        // Create a new li element
+        let newListElement = document.createElement('li')
+        // li element is this template string below that takes the student name, id and gpa input
+        newListElement.innerHTML = `Name: ${studentText} ID: ${idText} and GPA: ${gpaText}`
+        
+        // When list item is clicked 
+        newListElement.addEventListener('click', function() {
+            // add class "selected" when clicked again remove class "selected"
+            newListElement.classList.toggle('selected')
+
+        
+        })
+        studentList.appendChild(newListElement) 
+
+    })
+
+    removeStudentButton.addEventListener('click', function() {
+
+    })
+
+</script>
+
+</body>
+</html>

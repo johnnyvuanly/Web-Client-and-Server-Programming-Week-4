@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+</head>
+<body>
+    
+    <!-- Write your HTML content here -->
+    <p>What is the capitol of Wisconsin?</p>
+
+    <button class="wrong-answer">Bayfield</button>
+    <button id="correct-answer">Madison</button>
+    <button class="wrong-answer">Milwaukee</button>
+
+    <p id="result"></p>
+
+<script>
+    
+    // Write your script here
+
+    let correctAnswerButton = document.querySelector('#correct-answer')
+    // Allows you to see what is the correct answer when using element selector
+    // on the browser when it is hovered over
+    console.log(correctAnswerButton)
+
+    // Set an instance where the correct answer has the default color
+    let defaultButtonColor = correctAnswerButton.style.background
+
+    let result = document.querySelector('#result')
+
+    let wrondAnswerButtons = document.querySelectorAll('.wrong-answer')
+    // Should display a node list of the wrong answer buttons when looking in the console on browser
+    console.log(wrondAnswerButtons)
+
+    // Function below is called functinal style loop
+
+
+    // Add event listener to both wrong answer buttons
+    wrondAnswerButtons.forEach( function(wrongAnswerButton) { // Loop repeats for each element in the wronganswerbuttons nodelist
+        console.log(wrongAnswerButton)
+        wrongAnswerButton.addEventListener('click', function() {
+            result.innerHTML = 'Wrong anwser, try again?'
+            // Returns the correct anwser button back to default when wrong button is clicked
+            correctAnswerButton.style.background = defaultButtonColor
+        } )
+    } )
+
+    // function below is an imperative-style loop for loop
+    
+    
+    // for (let x=0; wrongAnswerButtons.length; x++) {
+    //     let wrondAnswerButton = wrongAnswerButtons[x]
+
+    //     wrongAnswerButton.addEventListener('click', function() {
+    //         result.innerHTML = 'Wrong anwser, try again?'
+    //         correctAnswerButton.style.background = defaultButtonColor
+    //     } )
+    // } 
+
+    // Click event and defining the function on the same line
+    // Add event listener to both wrong answer buttons
+    correctAnswerButton.addEventListener('click', function() {
+        // Displays this result when correct button is clicked
+        result.innerHTML = 'Correct answer!'
+        // Makes button green
+        correctAnswerButton.style.background = 'green'
+
+    } )
+
+</script>
+
+</body>
+</html>
