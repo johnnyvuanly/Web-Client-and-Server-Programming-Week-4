@@ -85,6 +85,10 @@
     let studentList = document.querySelector('#student-list')
     let studentCount = document.querySelector('#student-count')
     let removeStudentButton = document.querySelector('#remove-selected-students')
+    let studentElementCount = document.querySelectorAll('li').length
+
+    // Displays how many li in the span
+    studentCount.innerHTML = studentElementCount
 
     // Counts the number of li elements and use that to figure out how many students
     let numberOfStudents = 0
@@ -130,10 +134,9 @@
             // add class "selected" when clicked again remove class "selected"
             newListElement.classList.toggle('selected')
 
-        
         })
         studentList.appendChild(newListElement) 
-
+        
     })
 
     // First had to find the button by getting the id, when click it does....
